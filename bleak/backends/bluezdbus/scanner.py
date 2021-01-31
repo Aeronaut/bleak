@@ -13,7 +13,7 @@ logger = logging.getLogger(__name__)
 _here = pathlib.Path(__file__).parent
 
 
-def _filter_on_adapter(objs, pattern="hci0"):
+def _filter_on_adapter(objs, pattern="hci1"):
     for path, interfaces in objs.items():
         adapter = interfaces.get("org.bluez.Adapter1")
         if adapter is None:
@@ -68,7 +68,7 @@ class BleakScannerBlueZDBus(BaseBleakScanner):
         super(BleakScannerBlueZDBus, self).__init__(**kwargs)
 
         # kwarg "device" is for backwards compatibility
-        self._adapter = kwargs.get("adapter", kwargs.get("device", "hci0"))
+        self._adapter = kwargs.get("adapter", kwargs.get("device", "hci1"))
         self._reactor = None
         self._bus = None
 

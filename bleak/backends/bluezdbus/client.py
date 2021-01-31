@@ -51,7 +51,7 @@ class BleakClientBlueZDBus(BaseBleakClient):
     def __init__(self, address_or_ble_device: Union[BLEDevice, str], **kwargs):
         super(BleakClientBlueZDBus, self).__init__(address_or_ble_device, **kwargs)
         # kwarg "device" is for backwards compatibility
-        self._adapter = kwargs.get("adapter", kwargs.get("device", "hci0"))
+        self._adapter = kwargs.get("adapter", kwargs.get("device", "hci1"))
 
         # Backend specific, TXDBus objects and data
         if isinstance(address_or_ble_device, BLEDevice):
